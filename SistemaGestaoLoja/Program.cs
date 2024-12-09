@@ -20,7 +20,7 @@ class Program
         RepositorioProduto repositorioProduto = new RepositorioProduto();
         GestorStock gestorStock = new GestorStock(repositorioProduto);
         gestorStock.InicializarStock();
-        MenuPrincipal menuPrincipal = new MenuPrincipal(repositorioUtilizador, repositorioAdministrador);
+        MenuPrincipal menuPrincipal = new MenuPrincipal(repositorioUtilizador, repositorioAdministrador,repositorioProduto, gestorStock);
         menuPrincipal.Mostrar();
     }
 }

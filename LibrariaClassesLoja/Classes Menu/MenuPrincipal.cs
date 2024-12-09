@@ -4,12 +4,16 @@ namespace LibrariaClassesLoja
     {
         private RepositorioUtilizador utilizadoresRepositorio;
         private RepositorioAdministrador administradoresRepositorio;
+        private RepositorioProduto repositorioProdutos;
+        private GestorStock gestorStock;
         private ServicoAutenticacao servicoAutenticacao;
 
-        public MenuPrincipal(RepositorioUtilizador utilizadoresRepositorio, RepositorioAdministrador administradoresRepositorio)
+        public MenuPrincipal(RepositorioUtilizador utilizadoresRepositorio, RepositorioAdministrador administradoresRepositorio, RepositorioProduto repositorioProduto, GestorStock gestorStock)
         {
             this.utilizadoresRepositorio = utilizadoresRepositorio;
             this.administradoresRepositorio = administradoresRepositorio;
+            this.repositorioProdutos = repositorioProduto;
+            this.gestorStock = gestorStock;
             servicoAutenticacao = new ServicoAutenticacao(utilizadoresRepositorio, administradoresRepositorio);
         }
 
@@ -32,7 +36,7 @@ namespace LibrariaClassesLoja
                             // Se for um admin
                             if (utilizadorOuAdmin is Administrador admin)
                             {
-                                MenuAdmin menuAdmin = new MenuAdmin(admin);  // Redireciona para o menu do Admin
+                                MenuAdmin menuAdmin = new MenuAdmin(admin,repositorioProdutos,gestorStock);  // Redireciona para o menu do Admin
                                 bool continueToMenuPrincipal = menuAdmin.Mostrar();
                                 if (!continueToMenuPrincipal) // Após logout
                                 {

@@ -19,6 +19,10 @@ namespace LibrariaClassesLoja
             }
         }
 
+        public Dictionary<Produto, int> ObterStock()
+        {
+            return stock;
+        }
         public void AtualizarStock()
         {
             var produtos = repositorioProduto.ObterTodos();
