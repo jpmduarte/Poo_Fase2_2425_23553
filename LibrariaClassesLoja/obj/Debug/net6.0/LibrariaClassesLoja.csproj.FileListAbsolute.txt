@@ -1,0 +1,12 @@
+/Users/vivianaoliveira/Desktop/POOMAC/LibrariaClassesLoja/bin/Debug/net6.0/LibrariaClassesLoja.deps.json
+/Users/vivianaoliveira/Desktop/POOMAC/LibrariaClassesLoja/bin/Debug/net6.0/LibrariaClassesLoja.dll
+/Users/vivianaoliveira/Desktop/POOMAC/LibrariaClassesLoja/bin/Debug/net6.0/LibrariaClassesLoja.pdb
+/Users/vivianaoliveira/Desktop/POOMAC/LibrariaClassesLoja/obj/Debug/net6.0/LibrariaClassesLoja.csproj.AssemblyReference.cache
+/Users/vivianaoliveira/Desktop/POOMAC/LibrariaClassesLoja/obj/Debug/net6.0/LibrariaClassesLoja.GeneratedMSBuildEditorConfig.editorconfig
+/Users/vivianaoliveira/Desktop/POOMAC/LibrariaClassesLoja/obj/Debug/net6.0/LibrariaClassesLoja.AssemblyInfoInputs.cache
+/Users/vivianaoliveira/Desktop/POOMAC/LibrariaClassesLoja/obj/Debug/net6.0/LibrariaClassesLoja.AssemblyInfo.cs
+/Users/vivianaoliveira/Desktop/POOMAC/LibrariaClassesLoja/obj/Debug/net6.0/LibrariaClassesLoja.csproj.CoreCompileInputs.cache
+/Users/vivianaoliveira/Desktop/POOMAC/LibrariaClassesLoja/obj/Debug/net6.0/LibrariaClassesLoja.dll
+/Users/vivianaoliveira/Desktop/POOMAC/LibrariaClassesLoja/obj/Debug/net6.0/refint/LibrariaClassesLoja.dll
+/Users/vivianaoliveira/Desktop/POOMAC/LibrariaClassesLoja/obj/Debug/net6.0/LibrariaClassesLoja.pdb
+/Users/vivianaoliveira/Desktop/POOMAC/LibrariaClassesLoja/obj/Debug/net6.0/ref/LibrariaClassesLoja.dll

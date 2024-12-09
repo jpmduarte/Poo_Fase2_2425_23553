@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrariaClassesLoja", "LibrariaClassesLoja\LibrariaClassesLoja.csproj", "{3453D443-10BD-4EBB-AB40-A6504B8DD415}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaGestaoLoja", "SistemaGestaoLoja\SistemaGestaoLoja.csproj", "{1D0AB3F0-ABCA-4B51-8E9E-14070899C566}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3453D443-10BD-4EBB-AB40-A6504B8DD415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3453D443-10BD-4EBB-AB40-A6504B8DD415}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3453D443-10BD-4EBB-AB40-A6504B8DD415}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3453D443-10BD-4EBB-AB40-A6504B8DD415}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D0AB3F0-ABCA-4B51-8E9E-14070899C566}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D0AB3F0-ABCA-4B51-8E9E-14070899C566}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D0AB3F0-ABCA-4B51-8E9E-14070899C566}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D0AB3F0-ABCA-4B51-8E9E-14070899C566}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
