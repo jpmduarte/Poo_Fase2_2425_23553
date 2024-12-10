@@ -3,17 +3,20 @@ namespace LibrariaClassesLoja
     public class MenuPrincipal
     {
         private RepositorioUtilizador utilizadoresRepositorio;
+
+        private HistoricoCompras historicoCompras;
         private RepositorioAdministrador administradoresRepositorio;
         private RepositorioProduto repositorioProdutos;
         private GestorStock gestorStock;
         private ServicoAutenticacao servicoAutenticacao;
 
-        public MenuPrincipal(RepositorioUtilizador utilizadoresRepositorio, RepositorioAdministrador administradoresRepositorio, RepositorioProduto repositorioProduto, GestorStock gestorStock)
+        public MenuPrincipal(RepositorioUtilizador utilizadoresRepositorio, RepositorioAdministrador administradoresRepositorio, RepositorioProduto repositorioProduto, GestorStock gestorStock, HistoricoCompras historicoCompras)
         {
             this.utilizadoresRepositorio = utilizadoresRepositorio;
             this.administradoresRepositorio = administradoresRepositorio;
             this.repositorioProdutos = repositorioProduto;
             this.gestorStock = gestorStock;
+            this.historicoCompras = historicoCompras;
             servicoAutenticacao = new ServicoAutenticacao(utilizadoresRepositorio, administradoresRepositorio);
         }
 
@@ -36,7 +39,7 @@ namespace LibrariaClassesLoja
                             // Se for um admin
                             if (utilizadorOuAdmin is Administrador admin)
                             {
-                                MenuAdmin menuAdmin = new MenuAdmin(admin,repositorioProdutos,gestorStock);  // Redireciona para o menu do Admin
+                                MenuAdmin menuAdmin = new MenuAdmin(admin,repositorioProdutos,gestorStock,utilizadoresRepositorio,historicoCompras);  // Redireciona para o menu do Admin
                                 bool continueToMenuPrincipal = menuAdmin.Mostrar();
                                 if (!continueToMenuPrincipal) // Após logout
                                 {
@@ -46,7 +49,7 @@ namespace LibrariaClassesLoja
                             // Se for um utilizador comum
                             else if (utilizadorOuAdmin is Utilizador utilizador)
                             {
-                                MenuUtilizador menuUtilizador = new MenuUtilizador(utilizador);  // Redireciona para o menu do Utilizador
+                                MenuUtilizador menuUtilizador = new MenuUtilizador(utilizador,historicoCompras, repositorioProdutos, gestorStock);  // Redireciona para o menu do Utilizador
                                 bool continueToMenuPrincipal = menuUtilizador.Mostrar();
                                 if (!continueToMenuPrincipal) // Após logout
                                 {
@@ -59,7 +62,7 @@ namespace LibrariaClassesLoja
                         Utilizador utilizadoraRegistar = Registar();
                         if (utilizadoraRegistar != null)
                         {
-                            MenuUtilizador menuUtilizador = new MenuUtilizador(utilizadoraRegistar);
+                            MenuUtilizador menuUtilizador = new MenuUtilizador(utilizadoraRegistar, historicoCompras, repositorioProdutos, gestorStock);  // Redireciona para o menu do Utilizador
                             bool continueToMenuPrincipal = menuUtilizador.Mostrar();
                             if (!continueToMenuPrincipal) // Após logout
                             {

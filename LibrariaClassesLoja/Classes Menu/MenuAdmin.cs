@@ -4,12 +4,17 @@ namespace LibrariaClassesLoja
     {
         private Administrador administrador;
         private GestorStock gestorStocks;
+
+        HistoricoCompras historicoCompras;
         private RepositorioProduto repositorioProdutos;
-        public MenuAdmin(Administrador administrador, RepositorioProduto repositorioProdutos, GestorStock gestorStock)
+        private RepositorioUtilizador repositorioUtilizador;
+        public MenuAdmin(Administrador administrador, RepositorioProduto repositorioProdutos, GestorStock gestorStock, RepositorioUtilizador repositorioUtilizadores, HistoricoCompras historicoCompras)
         {
+            this.historicoCompras = historicoCompras;
             this.administrador = administrador;
             this.repositorioProdutos = repositorioProdutos;
             this.gestorStocks = gestorStock;
+            this.repositorioUtilizador = repositorioUtilizadores;
         }
         public bool Mostrar()
         {
@@ -29,10 +34,7 @@ namespace LibrariaClassesLoja
                 Console.WriteLine("11 - Atualizar Utilizador");
                 Console.WriteLine("12 - Estatísticas de vendas por utilizador");
                 Console.WriteLine("13 - Estatísticas de vendas por produto");
-                Console.WriteLine("14 - Criaçao de promocao");
-                Console.WriteLine("15 - Listar promocoes");
-                Console.WriteLine("16 - Remover promocao");
-                Console.WriteLine("17 - Atualizar promocao");
+                Console.WriteLine("14 - Estatísticas de vendas por Data");
                 Console.WriteLine("0 - Logout");
                 Console.WriteLine("Escolha uma opção:");
                 string opcao = Console.ReadLine();
@@ -292,6 +294,182 @@ namespace LibrariaClassesLoja
                             Console.WriteLine($"Erro ao atualizar o produto: {ex.Message}");
                         }
                         break;
+                    case "8":
+                        Console.WriteLine("Listar Utilizadores:");
+                        var utilizadores = repositorioUtilizador.ObterTodos();
+                        foreach (var utilizador in utilizadores)
+                        {
+                            Console.WriteLine(utilizador);
+                        }
+                        break;
+                    case "9":
+                        Console.WriteLine("Criar Utilizador:");
+                        string nomeUtilizador;
+                        do
+                        {
+                            Console.WriteLine("Nome:");
+                            nomeUtilizador = Console.ReadLine();
+                            if (string.IsNullOrWhiteSpace(nomeUtilizador))
+                            {
+                                Console.WriteLine("Nome inválido. Por favor, insira um nome.");
+                            }
+                        } while (string.IsNullOrWhiteSpace(nomeUtilizador));
+                        string emailUtilizador;
+                        do
+                        {
+                            Console.WriteLine("Email:");
+                            emailUtilizador = Console.ReadLine();
+                            if (string.IsNullOrWhiteSpace(emailUtilizador))
+                            {
+                                Console.WriteLine("Email inválido. Por favor, insira um email.");
+                            }
+                        } while (string.IsNullOrWhiteSpace(emailUtilizador));
+                        string passwordUtilizador;
+                        do
+                        {
+                            Console.WriteLine("Password:");
+                            passwordUtilizador = Console.ReadLine();
+                            if (string.IsNullOrWhiteSpace(passwordUtilizador))
+                            {
+                                Console.WriteLine("Password inválida. Por favor, insira uma password.");
+                            }
+                        } while (string.IsNullOrWhiteSpace(passwordUtilizador));
+                        try
+                        {
+                            Utilizador utilizador = new Utilizador(nomeUtilizador, passwordUtilizador, emailUtilizador);
+                            repositorioUtilizador.Adicionar(utilizador);
+                            Console.WriteLine("Utilizador criado com sucesso!");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Erro ao criar o utilizador: {ex.Message}");
+                        }
+                        break;
+                    case "10":
+                        Console.WriteLine("Remover Utilizador:");
+                        int idUtilizadorRemover;
+                        while (true)
+                        {
+                            Console.WriteLine("ID do utilizador:");
+                            string inputId = Console.ReadLine();
+                            if (int.TryParse(inputId, out idUtilizadorRemover) && idUtilizadorRemover > 0)
+                            {
+                                break; // Entrada válida
+                            }
+                            Console.WriteLine("ID do utilizador inválido. Por favor, insira um número inteiro positivo.");
+                        }
+                        try
+                        {
+                            string emailUtilizadorRemover;
+                            foreach (var x in repositorioUtilizador.ObterTodos())
+                            {
+                                if (x.Id == idUtilizadorRemover)
+                                {
+                                    emailUtilizadorRemover = x.Email;
+                                    repositorioUtilizador.Remover(emailUtilizadorRemover);
+                                    Console.WriteLine("Utilizador removido com sucesso!");
+                                    break;
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Erro ao remover o utilizador: {ex.Message}");
+                        }
+                        break;
+                    case "11":
+                        Console.WriteLine("Atualizar Utilizador:");
+                        int idUtilizadorAtualizar;
+                        while (true)
+                        {
+                            Console.WriteLine("ID do utilizador:");
+                            string inputId = Console.ReadLine();
+                            if (int.TryParse(inputId, out idUtilizadorAtualizar) && idUtilizadorAtualizar > 0)
+                            {
+                                break; // Entrada válida
+                            }
+                            Console.WriteLine("ID do utilizador inválido. Por favor, insira um número inteiro positivo.");
+                        }
+                        string nomeUtilizadorAtualizar;
+                        do
+                        {
+                            Console.WriteLine("Nome:");
+                            nomeUtilizadorAtualizar = Console.ReadLine();
+                            if (string.IsNullOrWhiteSpace(nomeUtilizadorAtualizar))
+                            {
+                                Console.WriteLine("Nome inválido. Por favor, insira um nome.");
+                            }
+                        } while (string.IsNullOrWhiteSpace(nomeUtilizadorAtualizar));
+                        string emailUtilizadorAtualizar;
+                        do
+                        {
+                            Console.WriteLine("Email:");
+                            emailUtilizadorAtualizar = Console.ReadLine();
+                            if (string.IsNullOrWhiteSpace(emailUtilizadorAtualizar))
+                            {
+                                Console.WriteLine("Email inválido. Por favor, insira um email.");
+                            }
+                        } while (string.IsNullOrWhiteSpace(emailUtilizadorAtualizar));
+                        string passwordUtilizadorAtualizar;
+                        do
+                        {
+                            Console.WriteLine("Password:");
+                            passwordUtilizadorAtualizar = Console.ReadLine();
+                            if (string.IsNullOrWhiteSpace(passwordUtilizadorAtualizar))
+                            {
+                                Console.WriteLine("Password inválida. Por favor, insira uma password.");
+                            }
+                        } while (string.IsNullOrWhiteSpace(passwordUtilizadorAtualizar));
+                        try
+                        {
+                            utilizadores = repositorioUtilizador.ObterTodos();
+                            foreach (var item in utilizadores)
+                            {
+                                if (item.Id == idUtilizadorAtualizar)
+                                {
+                                    Utilizador utilizador = item;
+                                    utilizador.Nome = nomeUtilizadorAtualizar;
+                                    utilizador.Email = emailUtilizadorAtualizar;
+                                    utilizador.Password = passwordUtilizadorAtualizar;
+                                    repositorioUtilizador.Atualizar(utilizador);
+                                    Console.WriteLine("Utilizador atualizado com sucesso!");
+                                    break;
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Erro ao atualizar o utilizador: {ex.Message}");
+                        }
+
+                        break;
+
+                    case "12":
+                        Console.WriteLine("Estatísticas de vendas por utilizador:");
+                        Console.WriteLine("Insira o ID do utilizador:");
+                        int idUtilizadorEstatisticas;
+                        while (true)
+                        {
+                            Console.WriteLine("ID do utilizador:");
+                            string inputId = Console.ReadLine();
+                            if (int.TryParse(inputId, out idUtilizadorEstatisticas) && idUtilizadorEstatisticas > 0)
+                            {
+                                break; // Entrada válida
+                            }
+                            Console.WriteLine("ID do utilizador inválido. Por favor, insira um número inteiro positivo.");
+                        }
+                        var comprasPorUtilizador = historicoCompras.ObterPorUtilizador(idUtilizadorEstatisticas);
+                        double valorTotal = 0.0;
+                        foreach (var item in comprasPorUtilizador)
+                        {
+                            Console.WriteLine($"{item}");
+                            valorTotal += item.ValorTotal;
+
+                        }
+                        Console.WriteLine($"Valor total das compras: {valorTotal}");
+                        break;
+                    
+                    
                     case "0":
                         Console.WriteLine("Logout efetuado.");
                         return false;

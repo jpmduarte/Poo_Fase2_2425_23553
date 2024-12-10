@@ -33,6 +33,12 @@ namespace LibrariaClassesLoja
                     stock.Add(produto, 0);
                 }
             }
+            // Remove produtos que não existem no repositório
+            var produtosRemover = stock.Keys.Except(produtos);
+            foreach (var produto in produtosRemover)
+            {
+                stock.Remove(produto);
+            }
         }
         public void AdicionarStock(int id, int quantidade)
         {

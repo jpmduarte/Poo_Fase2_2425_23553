@@ -5,6 +5,7 @@ class Program
 {
     static void Main()
     {
+        HistoricoCompras historicoCompras = new HistoricoCompras();
         RepositorioAdministrador repositorioAdministrador = new RepositorioAdministrador();
         try
         {
@@ -20,7 +21,7 @@ class Program
         RepositorioProduto repositorioProduto = new RepositorioProduto();
         GestorStock gestorStock = new GestorStock(repositorioProduto);
         gestorStock.InicializarStock();
-        MenuPrincipal menuPrincipal = new MenuPrincipal(repositorioUtilizador, repositorioAdministrador,repositorioProduto, gestorStock);
+        MenuPrincipal menuPrincipal = new MenuPrincipal(repositorioUtilizador, repositorioAdministrador,repositorioProduto, gestorStock, historicoCompras);
         menuPrincipal.Mostrar();
     }
 }
